@@ -9,11 +9,29 @@ defmodule GameKnight.Game.Game do
     repo GameKnight.Repo
   end
 
+  actions do
+    create :create do
+      accept [:name]
+    end
+
+    read :read do
+      primary? true
+    end
+
+    update :update do
+      accept [:name]
+    end
+
+    destroy :destroy do
+    end
+  end
+
   attributes do
     uuid_primary_key :id
 
     attribute :name, :string do
       allow_nil? false
+      public? true
     end
 
     create_timestamp :inserted_at
