@@ -1,29 +1,12 @@
-defmodule GameKnight.Game.Game do
+defmodule GameKnight.Game.Publisher do
   use Ash.Resource,
     otp_app: :game_knight,
     domain: GameKnight.Game,
     data_layer: AshPostgres.DataLayer
 
   postgres do
-    table "games"
+    table "publishers"
     repo GameKnight.Repo
-  end
-
-  actions do
-    create :create do
-      accept [:name]
-    end
-
-    read :read do
-      primary? true
-    end
-
-    update :update do
-      accept [:name]
-    end
-
-    destroy :destroy do
-    end
   end
 
   attributes do
@@ -34,11 +17,16 @@ defmodule GameKnight.Game.Game do
       public? true
     end
 
+    attribute :website, :string do
+      allow_nil? false
+      public? true
+    end
+
     create_timestamp :inserted_at
     update_timestamp :updated_at
   end
 
   relationships do
-    belongs_to :publisher, GameKnight.Game.Publisher
+    has_many :games, GameKnight.Game.Game
   end
 end
