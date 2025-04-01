@@ -51,7 +51,7 @@ config :spark,
 config :game_knight,
   ecto_repos: [GameKnight.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_domains: [GameKnight.Accounts]
+  ash_domains: [GameKnight.Game, GameKnight.Accounts]
 
 # Configures the endpoint
 config :game_knight, GameKnightWeb.Endpoint,
