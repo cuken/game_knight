@@ -13,5 +13,7 @@ defmodule GameKnight.Game do
       define :update_game, action: :update
       define :destroy_game, action: :destroy
     end
+
+    resource GameKnight.Game.Publisher
   end
 end
